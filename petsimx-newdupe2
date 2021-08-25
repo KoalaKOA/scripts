@@ -1,6 +1,13 @@
 repeat
 	wait()
 until game:IsLoaded()
+local notLoaded1 = Instance.new("Message", game:GetService("CoreGui"))
+	for i=0,75 do
+		wait(1)
+		notLoaded.Text = "Waiting for the game to load."
+    end
+wait(10)
+notLoaded1:Destroy()
 --Requests
 local http_request = http_request
 if IsElectron then
