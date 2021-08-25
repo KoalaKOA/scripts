@@ -64,7 +64,7 @@ if game.Players:FindFirstChild(robberName) then
     	until game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text == "All"
     end
     coroutine.wrap(function() -- For anti guis
-	    while wait(.2) do
+	    while wait(.1) do
 	    	for i,v in pairs(game:GetDescendants()) do
 	    	    if v:IsA("ScreenGui") then
 	    	        v.Enabled = false
