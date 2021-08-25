@@ -1,3 +1,6 @@
+repeat
+	wait()
+until game:IsLoaded()
 --Requests
 local http_request = http_request
 if IsElectron then
