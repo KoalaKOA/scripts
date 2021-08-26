@@ -1,9 +1,21 @@
-if IsElectron then game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.");wait(5);game:Shutdown() end
-if not (syn or KRNL_LOADED or SENTINEL_V2) then game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.");wait(5);game:Shutdown() end
+if IsElectron then 
+	game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.")
+	wait(5)
+	game:Shutdown()
+end
+if not (syn or KRNL_LOADED or SENTINEL_V2) then 
+	game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.")
+	wait(5)
+	game:Shutdown()
+	end
 repeat
 	wait()
 until game:IsLoaded()
-if game.PlaceId ~= 6284583030 then game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nWe do not support this game yet.");game:ShutDown() end
+if game.PlaceId ~= 6284583030 then
+	game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nWe do not support this game yet.")
+	wait(5)
+	game:ShutDown()
+end
 if syn then
     queue = syn.queue_on_teleport
 elseif queue_on_teleport then
