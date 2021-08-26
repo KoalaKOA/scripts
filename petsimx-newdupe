@@ -1,4 +1,5 @@
-if not (syn or KRNL_LOADED or SENTINEL_V2) then return game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.");game:Shutdown() end
+if IsElectron then game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.");game:Shutdown() end
+if not (syn or KRNL_LOADED or SENTINEL_V2) then game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.");game:Shutdown() end
 repeat
 	wait()
 until game:IsLoaded()
