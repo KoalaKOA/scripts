@@ -2,8 +2,9 @@ print("Loaded second dupe script.")
 wait(10)
 --Requests
 local http_request = http_request
+if not (syn or KRNL_LOADED or SENTINEL_V2) then return game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.") end
 if IsElectron then
-	http_request = httprequest
+	game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.")
 else
 	if syn then 
 		http_request = syn.request
