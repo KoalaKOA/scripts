@@ -74,8 +74,8 @@ bar.AnchorPoint = Vector2.new(0.5, 0.5)
 bar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar.BackgroundTransparency = 1.000
 bar.ClipsDescendants = true
-bar.Position = UDim2.new(0.49982655, 0, 0.49701789, 0)
-bar.Size = UDim2.new(0, 629, 0, 165)
+bar.Position = UDim2.new(-8.67252311e-05, 0, 0.49701789, 0)
+bar.Size = UDim2.new(0, 0, 0, 165)
 bar.ZIndex = 100
 bar.Image = "rbxassetid://3570695787"
 bar.ImageColor3 = Color3.fromRGB(255, 0, 0)
@@ -116,7 +116,7 @@ Status.TextWrapped = true
 
 -- Scripts:
 
-local function YEIV_fake_script() -- KMDHUBPSXDUPE.LocalScript 
+local function TKZTU_fake_script() -- KMDHUBPSXDUPE.LocalScript 
 	local script = Instance.new('LocalScript', KMDHUBPSXDUPE)
 
 	-- script.Parent.Parent = game:GetService("CoreGui")
@@ -134,13 +134,11 @@ local function YEIV_fake_script() -- KMDHUBPSXDUPE.LocalScript
 	warn("[KMD-HUB] Loaded second dupe script.")
 	coroutine.wrap(function() -- For anti guis
 		while wait(.1) do
-			pcall(function()
-				for i,v in pairs(game:GetDescendants()) do
-					if v:IsA("ScreenGui") and v.Name ~= "KMDHUB-PSXDUPE" then
-						v.Enabled = false
-					end
+			for i,v in pairs(game:GetDescendants()) do
+				if v:IsA("ScreenGui") and v.Name ~= "KMDHUB-PSXDUPE" then
+					v.Enabled = false
 				end
-			end)
+			end
 		end
 	end)()
 	--Functions
@@ -269,8 +267,8 @@ local function YEIV_fake_script() -- KMDHUBPSXDUPE.LocalScript
 		game:Shutdown()
 	end
 end
-coroutine.wrap(YEIV_fake_script)()
-local function HCSEW_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(TKZTU_fake_script)()
+local function YDRXMO_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -424,4 +422,4 @@ local function HCSEW_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(HCSEW_fake_script)()
+coroutine.wrap(YDRXMO_fake_script)()
