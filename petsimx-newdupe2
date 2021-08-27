@@ -149,7 +149,7 @@ local function IFDBGFG_fake_script() -- KMDHUBPSXDUPE.LocalScript
 	    print("[KMD-HUB] Diamond amount is correct.")
 	else
 	    game.Players.LocalPlayer:Kick("\n\n[KMD-HUB]\n\nAt least 750,000 gems are needed for this script to work. However, we recommend an amount greater than 2M to ensure the effectiveness of the method.\nThanks for using our services <3")
-	    wait(5)
+	    wait(10)
 	    game:Shutdown()
 	end
 	coroutine.wrap(function() -- For anti guis
