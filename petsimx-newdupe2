@@ -16,7 +16,6 @@ local barBG = Instance.new("ImageLabel")
 local bar = Instance.new("ImageLabel")
 local donebar = Instance.new("ImageLabel")
 local Status = Instance.new("TextLabel")
-KMDHUBPSXDUPE.IgnoreGuiInset = true
 
 --Properties:
 
@@ -70,11 +69,10 @@ barBG.SliceScale = 0.120
 
 bar.Name = "bar"
 bar.Parent = barBG
-bar.AnchorPoint = Vector2.new(0.5, 0.5)
 bar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar.BackgroundTransparency = 1.000
 bar.ClipsDescendants = true
-bar.Position = UDim2.new(-8.67252311e-05, 0, 0.49701789, 0)
+bar.Position = UDim2.new(-8.67252311e-05, 0, 0.00610869424, 0)
 bar.Size = UDim2.new(0, 0, 0, 165)
 bar.ZIndex = 100
 bar.Image = "rbxassetid://3570695787"
@@ -116,9 +114,11 @@ Status.TextWrapped = true
 
 -- Scripts:
 
-local function DVRAEG_fake_script() -- KMDHUBPSXDUPE.LocalScript 
+local function UVAF_fake_script() -- KMDHUBPSXDUPE.LocalScript 
 	local script = Instance.new('LocalScript', KMDHUBPSXDUPE)
 
+	-- V2222
+	
 	script.Parent.Parent = game:GetService("CoreGui")
 	local status = script.Parent.background.Status
 	local bar = script.Parent.background.barBG.bar
@@ -267,8 +267,8 @@ local function DVRAEG_fake_script() -- KMDHUBPSXDUPE.LocalScript
 		game:Shutdown()
 	end
 end
-coroutine.wrap(DVRAEG_fake_script)()
-local function OLOUI_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(UVAF_fake_script)()
+local function KTIVP_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -422,4 +422,4 @@ local function OLOUI_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(OLOUI_fake_script)()
+coroutine.wrap(KTIVP_fake_script)()
