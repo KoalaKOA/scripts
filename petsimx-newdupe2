@@ -1,3 +1,8 @@
+if game.PlaceId ~= 6284583030 then
+	game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nWe're sorry!\nThis game is not yet supported.")
+	wait(5)
+	game:Shutdown()
+end
 -- Gui to Lua
 -- Version: 3.2
 
