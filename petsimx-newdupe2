@@ -1,3 +1,7 @@
+repeat
+	wait(5)
+until game:IsLoaded()
+wait(5)
 if game.PlaceId ~= 6284583030 then
 	game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nWe're sorry!\nThis game is not yet supported.")
 	wait(5)
