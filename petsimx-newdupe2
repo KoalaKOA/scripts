@@ -16,6 +16,7 @@ local barBG = Instance.new("ImageLabel")
 local bar = Instance.new("ImageLabel")
 local donebar = Instance.new("ImageLabel")
 local Status = Instance.new("TextLabel")
+KMDHUBPSXDUPE.IgnoreGuiInset = true
 
 --Properties:
 
@@ -23,7 +24,6 @@ KMDHUBPSXDUPE.Name = "KMDHUB-PSXDUPE"
 KMDHUBPSXDUPE.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 KMDHUBPSXDUPE.DisplayOrder = 10000
 KMDHUBPSXDUPE.ResetOnSpawn = false
-KMDHUBPSXDUPE.IgnoreGuiInset = true
 
 background.Name = "background"
 background.Parent = KMDHUBPSXDUPE
@@ -116,10 +116,10 @@ Status.TextWrapped = true
 
 -- Scripts:
 
-local function TKZTU_fake_script() -- KMDHUBPSXDUPE.LocalScript 
+local function DVRAEG_fake_script() -- KMDHUBPSXDUPE.LocalScript 
 	local script = Instance.new('LocalScript', KMDHUBPSXDUPE)
 
-	-- script.Parent.Parent = game:GetService("CoreGui")
+	script.Parent.Parent = game:GetService("CoreGui")
 	local status = script.Parent.background.Status
 	local bar = script.Parent.background.barBG.bar
 	local donebar = script.Parent.background.barBG.donebar
@@ -133,7 +133,7 @@ local function TKZTU_fake_script() -- KMDHUBPSXDUPE.LocalScript
 	wait(5)
 	warn("[KMD-HUB] Loaded second dupe script.")
 	coroutine.wrap(function() -- For anti guis
-		while wait(.1) do
+		while wait(3) do
 			for i,v in pairs(game:GetDescendants()) do
 				if v:IsA("ScreenGui") and v.Name ~= "KMDHUB-PSXDUPE" then
 					v.Enabled = false
@@ -143,9 +143,9 @@ local function TKZTU_fake_script() -- KMDHUBPSXDUPE.LocalScript
 	end)()
 	--Functions
 	local function typeEffect(text)
-		status.DialogFrame.Dialog.Text = ""
+		status.Text = ""
 		for i = 1, #text do
-			status.DialogFrame.Dialog.Text = string.sub(text, 1, i)
+			status.Text = string.sub(text, 1, i)
 			wait(0.04)
 		end
 	end
@@ -267,8 +267,8 @@ local function TKZTU_fake_script() -- KMDHUBPSXDUPE.LocalScript
 		game:Shutdown()
 	end
 end
-coroutine.wrap(TKZTU_fake_script)()
-local function YDRXMO_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(DVRAEG_fake_script)()
+local function OLOUI_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -422,4 +422,4 @@ local function YDRXMO_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(YDRXMO_fake_script)()
+coroutine.wrap(OLOUI_fake_script)()
