@@ -1,4 +1,3 @@
-game.Players.LocalPlayer.CharacterAdded:Wait()
 print("[KMD-HUB] Loaded 2")
 repeat
 	wait(5)
