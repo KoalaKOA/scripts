@@ -1,6 +1,7 @@
 repeat
-	wait(1)
+	wait(5)
 until game:IsLoaded()
+wait(5)
 -- Gui to Lua
 -- Version: 3.2
 
