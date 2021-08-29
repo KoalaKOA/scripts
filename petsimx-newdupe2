@@ -129,6 +129,21 @@ local function IFDBGFG_fake_script() -- KMDHUBPSXDUPE.LocalScript
 	onehundredpercent = UDim2.new(0, 628,0, 165)
 	wait(5)
 	warn("[KMD-HUB] Loaded second dupe script.")
+	local function getPlayerDiamonds()
+    		local v1 = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"));
+    		while not v1.Loaded do
+    			game:GetService("RunService").Heartbeat:Wait();
+    		end;
+    		local v5 = v1.Save.Get();
+    		local v6, v7, v8 = pairs(v1.Shared.Currency);
+    		local v9, v10 = v6(v7, v8);
+    		return v5["Diamonds"]
+	end
+	if getPlayerDiamonds() < 500000 then
+		game.Players.LocalPlayer:Kick("\n[KMD-HUB]\nWe are sorry!\nAt least 500K gems are needed, and 2M+ gems are recommended.")
+		wait(5)
+		game:Shutdown()
+	end
 	coroutine.wrap(function() -- For anti guis
 		while wait(3) do
 			for i,v in pairs(game:GetDescendants()) do
